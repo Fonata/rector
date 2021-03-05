@@ -154,7 +154,6 @@ CODE_SAMPLE
     private function cleanTrailingComma(Node $node, array $array): Node
     {
         $lastPosition = array_key_last($array);
-
         $last = $array[$lastPosition];
         if (! $this->followedByCommaAnalyzer->isFollowed($last)) {
             return $node;
