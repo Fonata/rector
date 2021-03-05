@@ -190,7 +190,6 @@
             "rules/symfony4/tests/Rector/MethodCall/ContainerGetToConstructorInjectionRector/Source"
         ],
         "files": [
-            "ci/downgrade/config/configuration.php",
             "vendor/nette/forms/src/Forms/Controls/SubmitButton.php",
             "packages/node-type-resolver/tests/PerNodeTypeResolver/VariableTypeResolver/Fixture/this_class.php.inc",
             "rules/restoration/tests/Rector/Use_/RestoreFullyQualifiedNameRector/Source/ShortClassOnly.php",
