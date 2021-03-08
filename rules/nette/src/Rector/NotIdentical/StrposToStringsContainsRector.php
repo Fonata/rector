@@ -87,7 +87,7 @@ CODE_SAMPLE
         return $containsStaticCall;
     }
 
-    private function matchStrposInComparisonToFalse(BinaryOp $binaryOp): ?Expr
+    private function matchStrposInComparisonToFalse(BinaryOp $binaryOp): ?FuncCall
     {
         if ($this->valueResolver->isFalse($binaryOp->left)) {
             $rightExpr = $binaryOp->right;
