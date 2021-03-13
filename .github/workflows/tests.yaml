@@ -22,7 +22,7 @@ jobs:
             -
                 uses: actions/cache@v2
                 with:
-                    path: /tmp/rector/cache
+                    path: tmp/rector/cache
                     key: ${{ runner.os }}-rector-kernel-${{ hashFiles('${{ matrix.path }}') }}
                     restore-keys: |
                         ${{ runner.os }}-rector-kernel-
@@ -33,5 +33,7 @@ jobs:
                     php-version: ${{ matrix.php }}
                     # disable xdebug, pcov
                     coverage: none
+
+            -   uses: "ramsey/composer-install@v1"
 
             -   run: vendor/bin/phpunit ${{ matrix.path }}
