@@ -15,7 +15,7 @@ jobs:
                     - rules-tests
                     - packages-tests
 
-        name: PHP ${{ matrix.php }} tests
+        name: PHP ${{ matrix.php }} tests in ${{ matrix.path }}
         steps:
             -   uses: actions/checkout@v2
 
