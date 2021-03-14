@@ -45,12 +45,20 @@ final class AttributeAwareNodeFactory
      */
     public function createFromNode(Node $node, string $docContent): BaseNode
     {
-        $node = $this->phpDocNodeTraverser->traverseWithCallable($node, $docContent, function ($node) {
+        $node = $this->phpDocNodeTraverser->traverseWithCallable($node, $docContent, function (
+            $node,
+            string $docContent
+        ) {
             if (! $node instanceof UnionTypeNode) {
                 return $node;
             }
 
-            return new AttributeAwareUnionTypeNode($node->types);
+            // wrap just once
+            if ($node instanceof AttributeAwareUnionTypeNode) {
+                return $node;
+            }
+
+            return new AttributeAwareUnionTypeNode($node->types, $docContent);
         });
 
         if ($node instanceof AttributeAwareNodeInterface) {

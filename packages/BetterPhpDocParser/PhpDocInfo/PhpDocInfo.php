@@ -19,7 +19,6 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocTagNode;
-use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareReturnTagValueNode;
 use Rector\BetterPhpDocParser\Annotation\AnnotationNaming;
 use Rector\BetterPhpDocParser\Attributes\Ast\PhpDoc\SpacelessPhpDocTagNode;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
@@ -413,9 +412,8 @@ final class PhpDocInfo
         return $this->isSingleLine;
     }
 
-    public function getReturnTagValue(): ?AttributeAwareReturnTagValueNode
+    public function getReturnTagValue(): ?ReturnTagValueNode
     {
-        /** @var AttributeAwareReturnTagValueNode[] $returnTagValueNodes */
         $returnTagValueNodes = $this->phpDocNode->getReturnTagValues();
         return $returnTagValueNodes[0] ?? null;
     }
