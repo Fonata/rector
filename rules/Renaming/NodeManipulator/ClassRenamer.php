@@ -17,9 +17,9 @@ use PhpParser\Node\Stmt\UseUse;
 use PHPStan\Reflection\ClassReflection;
 use PHPStan\Reflection\ReflectionProvider;
 use PHPStan\Type\ObjectType;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\TypeAwareTagValueNodeInterface;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocClassRenamer;
+use Rector\BetterPhpDocParser\ValueObject\NodeTypes;
 use Rector\CodingStyle\Naming\ClassNaming;
 use Rector\Core\Configuration\Option;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
@@ -143,7 +143,7 @@ final class ClassRenamer
     private function refactorPhpDoc(Node $node, array $oldToNewClasses): void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($node);
-        if (! $phpDocInfo->hasByType(TypeAwareTagValueNodeInterface::class)) {
+        if (! $phpDocInfo->hasByTypes(NodeTypes::TYPE_AWARE_NODES)) {
             return;
         }
 

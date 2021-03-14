@@ -65,17 +65,17 @@ final class AttributeAwareNodeFactory
             return $node;
         }
 
-        foreach ($this->attributeAwareNodeFactories as $attributeNodeAwareFactory) {
-            if (! $attributeNodeAwareFactory->isMatch($node)) {
+        foreach ($this->attributeAwareNodeFactories as $attributeAwareNodeFactory) {
+            if (! $attributeAwareNodeFactory->isMatch($node)) {
                 continue;
             }
 
             // prevents cyclic dependency
-            if ($attributeNodeAwareFactory instanceof AttributeAwareNodeFactoryAwareInterface) {
-                $attributeNodeAwareFactory->setAttributeAwareNodeFactory($this);
+            if ($attributeAwareNodeFactory instanceof AttributeAwareNodeFactoryAwareInterface) {
+                $attributeAwareNodeFactory->setAttributeAwareNodeFactory($this);
             }
 
-            return $attributeNodeAwareFactory->create($node, $docContent);
+            return $attributeAwareNodeFactory->create($node, $docContent);
         }
 
         return $node;
