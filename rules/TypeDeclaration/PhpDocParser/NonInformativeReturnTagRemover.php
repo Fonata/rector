@@ -71,13 +71,13 @@ final class NonInformativeReturnTagRemover
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($functionLike);
 
-        $returnTagValue = $phpDocInfo->getReturnTagValue();
-        if (! $returnTagValue instanceof ReturnTagValueNode) {
+        $returnTagValueNode = $phpDocInfo->getReturnTagValue();
+        if (! $returnTagValueNode instanceof ReturnTagValueNode) {
             return;
         }
 
         // useful
-        if ($returnTagValue->description !== '') {
+        if ($returnTagValueNode->description !== '') {
             return;
         }
 
@@ -89,10 +89,10 @@ final class NonInformativeReturnTagRemover
             return;
         }
 
-        $this->removeNonUniqueUselessDocNames($returnType, $returnTagValue, $phpDocInfo);
-        $this->removeShortObjectType($returnType, $returnTagValue, $phpDocInfo);
-        $this->removeNullableType($returnType, $returnTagValue, $phpDocInfo);
-        $this->removeFullyQualifiedObjectType($returnType, $returnTagValue, $phpDocInfo);
+        $this->removeNonUniqueUselessDocNames($returnType, $returnTagValueNode, $phpDocInfo);
+        $this->removeShortObjectType($returnType, $returnTagValueNode, $phpDocInfo);
+        $this->removeNullableType($returnType, $returnTagValueNode, $phpDocInfo);
+        $this->removeFullyQualifiedObjectType($returnType, $returnTagValueNode, $phpDocInfo);
     }
 
     private function removeNonUniqueUselessDocNames(
