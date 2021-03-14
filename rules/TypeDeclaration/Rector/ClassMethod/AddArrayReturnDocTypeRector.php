@@ -16,7 +16,6 @@ use PHPStan\Type\IterableType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use PHPStan\Type\VoidType;
-use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareArrayShapeNode;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocManipulator\PhpDocTypeChanger;
 use Rector\Core\Rector\AbstractRector;
@@ -263,7 +262,7 @@ CODE_SAMPLE
             return true;
         }
 
-        if ($attributeAwareReturnTagValueNode->type instanceof AttributeAwareArrayShapeNode) {
+        if ($attributeAwareReturnTagValueNode->type instanceof ArrayShapeNode) {
             return true;
         }
 

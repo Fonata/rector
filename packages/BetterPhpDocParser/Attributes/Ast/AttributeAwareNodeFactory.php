@@ -9,7 +9,9 @@ use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocChildNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
+use PHPStan\PhpDocParser\Ast\Type\ArrayShapeItemNode;
 use PHPStan\PhpDocParser\Ast\Type\UnionTypeNode;
+use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareArrayShapeItemNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareUnionTypeNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
@@ -49,16 +51,19 @@ final class AttributeAwareNodeFactory
             $node,
             string $docContent
         ) {
-            if (! $node instanceof UnionTypeNode) {
-                return $node;
+            if ($node instanceof UnionTypeNode && ! $node instanceof AttributeAwareUnionTypeNode) {
+                return new AttributeAwareUnionTypeNode($node->types, $docContent);
             }
 
-            // wrap just once
-            if ($node instanceof AttributeAwareUnionTypeNode) {
-                return $node;
+            if ($node instanceof ArrayShapeItemNode && ! $node instanceof AttributeAwareArrayShapeItemNode) {
+                return new AttributeAwareArrayShapeItemNode(
+                    $node->keyName,
+                    $node->optional,
+                    $node->valueType,
+                    $docContent
+                );
             }
-
-            return new AttributeAwareUnionTypeNode($node->types, $docContent);
+            return $node;
         });
 
         if ($node instanceof AttributeAwareNodeInterface) {

@@ -47,7 +47,11 @@ final class VarAnnotationManipulator
 
         $fullyQualifiedIdentifierTypeNode = new FullyQualifiedIdentifierTypeNode($typeWithClassName->getClassName());
 
-        $attributeAwareVarTagValueNode = new VarTagValueNode($fullyQualifiedIdentifierTypeNode, '$' . $variableName, '');
+        $attributeAwareVarTagValueNode = new VarTagValueNode(
+            $fullyQualifiedIdentifierTypeNode,
+            '$' . $variableName,
+            ''
+        );
         $phpDocInfo->addTagValueNode($attributeAwareVarTagValueNode);
     }
 
