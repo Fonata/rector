@@ -6,10 +6,10 @@ namespace Rector\BetterPhpDocParser\PhpDocManipulator;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\PhpDocParser\Ast\PhpDoc\VarTagValueNode;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\Type;
 use PHPStan\Type\TypeWithClassName;
-use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareVarTagValueNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\FullyQualifiedIdentifierTypeNode;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfo;
 use Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory;
@@ -47,12 +47,7 @@ final class VarAnnotationManipulator
 
         $fullyQualifiedIdentifierTypeNode = new FullyQualifiedIdentifierTypeNode($typeWithClassName->getClassName());
 
-        $attributeAwareVarTagValueNode = new AttributeAwareVarTagValueNode(
-            $fullyQualifiedIdentifierTypeNode,
-            '$' . $variableName,
-            ''
-        );
-
+        $attributeAwareVarTagValueNode = new VarTagValueNode($fullyQualifiedIdentifierTypeNode, '$' . $variableName, '');
         $phpDocInfo->addTagValueNode($attributeAwareVarTagValueNode);
     }
 
