@@ -13,7 +13,7 @@ use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
 
 use Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
 
-final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
+final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactoryInterface //, AttributeAwareNodeFactoryAwareInterface
 {
     /**
      * @var AttributeAwareNodeFactory
@@ -44,11 +44,16 @@ final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactory
         $this->phpDocNodeTraverser->traverseWithCallable($node, $docContent, function (Node $node) use (
             $docContent
         ): Node {
+//            if ($node instanceof AttributeAwareNodeInterface) {
+//                return $node;
+//            }
+
             return $this->attributeAwareNodeFactory->createFromNode($node, $docContent);
         });
 
         return new AttributeAwarePhpDocNode($node->children);
     }
+
 
     public function setAttributeAwareNodeFactory(AttributeAwareNodeFactory $attributeAwareNodeFactory): void
     {

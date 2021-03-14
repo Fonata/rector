@@ -196,6 +196,11 @@ final class PhpDocInfoPrinter
             $output .= $this->printNode($phpDocChildNode, null, $key + 1, $nodeCount);
         }
 
+//        dump($output);
+//        $end = $this->printEnd($output);
+//        dump($end);
+//        die;
+
         $output = $this->printEnd($output);
 
         // fix missing start
@@ -274,6 +279,9 @@ final class PhpDocInfoPrinter
         $lastTokenPosition = $this->attributeAwarePhpDocNode->getAttribute(
             Attribute::LAST_TOKEN_POSITION
         ) ?: $this->currentTokenPosition;
+        if ($lastTokenPosition === 0) {
+            $lastTokenPosition = 1;
+        }
 
         return $this->addTokensFromTo($output, $lastTokenPosition, $this->tokenCount, true);
     }
@@ -306,9 +314,6 @@ final class PhpDocInfoPrinter
         return $this->appendToOutput($output, $from, $to, $positionJumpSet);
     }
 
-    /**
-     * @param PhpDocTagNode&BaseNode $phpDocTagNode
-     */
     private function printPhpDocTagNode(
         PhpDocTagNode $phpDocTagNode,
         StartAndEnd $startAndEnd,
