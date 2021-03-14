@@ -8,7 +8,6 @@ use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\Type\ConstTypeNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareConstTypeNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareConstTypeNodeFactory implements AttributeNodeAwareFactoryInterface
 {
@@ -25,7 +24,7 @@ final class AttributeAwareConstTypeNodeFactory implements AttributeNodeAwareFact
     /**
      * @param ConstTypeNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareConstTypeNode
     {
         return new AttributeAwareConstTypeNode($node->constExpr);
     }

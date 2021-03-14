@@ -8,7 +8,6 @@ use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\Type\CallableTypeParameterNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareCallableTypeParameterNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareCallableTypeParameterNodeFactory implements AttributeNodeAwareFactoryInterface
 {
@@ -25,7 +24,7 @@ final class AttributeAwareCallableTypeParameterNodeFactory implements AttributeN
     /**
      * @param CallableTypeParameterNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareCallableTypeParameterNode
     {
         return new AttributeAwareCallableTypeParameterNode(
             $node->type,

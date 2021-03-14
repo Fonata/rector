@@ -10,7 +10,6 @@ use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareExtendsTagValueNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareExtendsTagValueNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
@@ -32,7 +31,7 @@ final class AttributeAwareExtendsTagValueNodeFactory implements AttributeNodeAwa
     /**
      * @param ExtendsTagValueNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareExtendsTagValueNode
     {
         $node->type = $this->attributeAwareNodeFactory->createFromNode($node->type, $docContent);
 

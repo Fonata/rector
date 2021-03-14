@@ -8,7 +8,6 @@ use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\InvalidTagValueNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareInvalidTagValueNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareInvalidTagValueNodeFactory implements AttributeNodeAwareFactoryInterface
 {
@@ -25,7 +24,7 @@ final class AttributeAwareInvalidTagValueNodeFactory implements AttributeNodeAwa
     /**
      * @param InvalidTagValueNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareInvalidTagValueNode
     {
         return new AttributeAwareInvalidTagValueNode($node->value, $node->exception);
     }

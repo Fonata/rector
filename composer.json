@@ -109,6 +109,7 @@
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/IdentifierTypeNode.php",
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/UnionTypeNode.php",
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/ConstTypeNode.php",
+            "vendor/phpstan/phpdoc-parser/src/Ast/Type/NullableTypeNode.php",
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/IntersectionTypeNode.php",
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeNode.php",
             "vendor/phpstan/phpdoc-parser/src/Ast/Type/ArrayShapeItemNode.php",

@@ -11,8 +11,8 @@ use PHPStan\Type\Generic\TemplateObjectWithoutClassType;
 use PHPStan\Type\ObjectWithoutClassType;
 use PHPStan\Type\Type;
 use PHPStan\Type\VerbosityLevel;
-use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareGenericTypeNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIdentifierTypeNode;
+use Rector\AttributeAwarePhpDoc\Ast\Type\EmptyGenericTypeNode;
 use Rector\Core\Php\PhpVersionProvider;
 use Rector\Core\ValueObject\PhpVersionFeature;
 use Rector\PHPStanStaticTypeMapper\Contract\PHPStanStaticTypeMapperAwareInterface;
@@ -51,7 +51,7 @@ final class ObjectWithoutClassTypeMapper implements TypeMapperInterface, PHPStan
     {
         if ($type instanceof TemplateObjectWithoutClassType) {
             $attributeAwareIdentifierTypeNode = new AttributeAwareIdentifierTypeNode($type->getName());
-            return new AttributeAwareGenericTypeNode($attributeAwareIdentifierTypeNode, []);
+            return new EmptyGenericTypeNode($attributeAwareIdentifierTypeNode);
         }
 
         return new AttributeAwareIdentifierTypeNode('object');

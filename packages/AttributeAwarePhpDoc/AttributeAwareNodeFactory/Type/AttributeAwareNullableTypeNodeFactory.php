@@ -10,7 +10,6 @@ use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareNullableTypeNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareNullableTypeNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
@@ -32,7 +31,7 @@ final class AttributeAwareNullableTypeNodeFactory implements AttributeNodeAwareF
     /**
      * @param NullableTypeNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareNullableTypeNode
     {
         $node->type = $this->attributeAwareNodeFactory->createFromNode($node->type, $docContent);
 

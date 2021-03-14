@@ -10,7 +10,6 @@ use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIntersectionTypeNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareIntersectionTypeNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
@@ -32,7 +31,7 @@ final class AttributeAwareIntersectionTypeNodeFactory implements AttributeNodeAw
     /**
      * @param IntersectionTypeNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareIntersectionTypeNode
     {
         foreach ($node->types as $key => $intersectionedType) {
             $node->types[$key] = $this->attributeAwareNodeFactory->createFromNode($intersectionedType, $docContent);

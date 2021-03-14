@@ -10,7 +10,6 @@ use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareUnionTypeNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareUnionTypeNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
@@ -32,7 +31,7 @@ final class AttributeAwareUnionTypeNodeFactory implements AttributeNodeAwareFact
     /**
      * @param UnionTypeNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareUnionTypeNode
     {
         foreach ($node->types as $key => $unionedType) {
             $node->types[$key] = $this->attributeAwareNodeFactory->createFromNode($unionedType, $docContent);

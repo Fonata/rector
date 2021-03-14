@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Rector\AttributeAwarePhpDoc\AttributeAwareNodeFactory\PhpDoc;
 
+use PHPStan\PhpDocParser\Ast\BaseNode;
 use PHPStan\PhpDocParser\Ast\Node;
 use PHPStan\PhpDocParser\Ast\PhpDoc\MethodTagValueNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareMethodTagValueNode;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeAwareNodeFactoryAwareInterface;
 use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNodeAwareFactoryInterface;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 final class AttributeAwareMethodTagValueNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
@@ -32,7 +32,7 @@ final class AttributeAwareMethodTagValueNodeFactory implements AttributeNodeAwar
     /**
      * @param MethodTagValueNode $node
      */
-    public function create(Node $node, string $docContent): AttributeAwareNodeInterface
+    public function create(Node $node, string $docContent): AttributeAwareMethodTagValueNode
     {
         $returnType = $this->attributizeReturnType($node, $docContent);
 
@@ -54,10 +54,8 @@ final class AttributeAwareMethodTagValueNodeFactory implements AttributeNodeAwar
         $this->attributeAwareNodeFactory = $attributeAwareNodeFactory;
     }
 
-    private function attributizeReturnType(
-        MethodTagValueNode $methodTagValueNode,
-        string $docContent
-    ): ?AttributeAwareNodeInterface {
+    private function attributizeReturnType(MethodTagValueNode $methodTagValueNode, string $docContent): ?BaseNode
+    {
         if ($methodTagValueNode->returnType !== null) {
             return $this->attributeAwareNodeFactory->createFromNode($methodTagValueNode->returnType, $docContent);
         }
