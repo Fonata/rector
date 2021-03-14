@@ -12,7 +12,6 @@ use PHPStan\PhpDocParser\Ast\Type\IdentifierTypeNode;
 use PHPStan\PhpDocParser\Ast\Type\NullableTypeNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePhpDocNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwarePropertyTagValueNode;
-use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIdentifierTypeNode;
 use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareNullableTypeNode;
 use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
 use Rector\Core\HttpKernel\RectorKernel;
@@ -70,7 +69,6 @@ final class AttributeAwareNodeFactoryTest extends AbstractKernelTestCase
         /** @var NullableTypeNode $nullableTypeNode */
         $identifierTypeNode = $nullableTypeNode->type;
         $this->assertInstanceOf(IdentifierTypeNode::class, $identifierTypeNode);
-        $this->assertInstanceOf(AttributeAwareIdentifierTypeNode::class, $identifierTypeNode);
     }
 
     public function testAlreadyAttributeAware(): void

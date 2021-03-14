@@ -17,7 +17,6 @@ use PHPStan\Type\MixedType;
 use PHPStan\Type\ObjectType;
 use PHPStan\Type\Type;
 use PHPStan\Type\VerbosityLevel;
-use Rector\AttributeAwarePhpDoc\Ast\Type\AttributeAwareIdentifierTypeNode;
 use Rector\PHPStanStaticTypeMapper\Contract\PHPStanStaticTypeMapperAwareInterface;
 use Rector\PHPStanStaticTypeMapper\Contract\TypeMapperInterface;
 use Rector\PHPStanStaticTypeMapper\PHPStanStaticTypeMapper;
@@ -58,18 +57,18 @@ final class ObjectTypeMapper implements TypeMapperInterface, PHPStanStaticTypeMa
     public function mapToPHPStanPhpDocTypeNode(Type $type): TypeNode
     {
         if ($type instanceof ShortenedObjectType) {
-            return new AttributeAwareIdentifierTypeNode($type->getClassName());
+            return new IdentifierTypeNode($type->getClassName());
         }
 
         if ($type instanceof AliasedObjectType) {
-            return new AttributeAwareIdentifierTypeNode($type->getClassName());
+            return new IdentifierTypeNode($type->getClassName());
         }
 
         if ($type instanceof GenericObjectType) {
             return $this->mapGenericObjectType($type);
         }
 
-        return new AttributeAwareIdentifierTypeNode('\\' . $type->getClassName());
+        return new IdentifierTypeNode('\\' . $type->getClassName());
     }
 
     /**

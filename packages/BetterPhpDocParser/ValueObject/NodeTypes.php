@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rector\BetterPhpDocParser\ValueObject;
 
 use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PropertyTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ReturnTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\ThrowsTagValueNode;
@@ -18,7 +19,7 @@ use Rector\BetterPhpDocParser\ValueObject\PhpDocNode\Symfony\Validator\Constrain
 final class NodeTypes
 {
     /**
-     * @var array<class-string<\PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagValueNode>>
+     * @var array<class-string<PhpDocTagValueNode>>
      */
     public const TYPE_AWARE_NODES = [
         VarTagValueNode::class,
