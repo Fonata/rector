@@ -429,9 +429,6 @@ final class PhpDocInfoPrinter
         return '';
     }
 
-    /**
-     * @param BaseNode&PhpDocTagNode $phpDocTagNode
-     */
     private function hasDescription(PhpDocTagNode $phpDocTagNode): bool
     {
         $hasDescriptionWithOriginalSpaces = $phpDocTagNode->getAttribute(
