@@ -67,8 +67,8 @@ final class EntityIdNodeFactory
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($property);
 
         // add @var int
-        $varTagIntValueNode = $this->phpDocTagNodeFactory->createVarTagIntValueNode();
-        $phpDocInfo->addTagValueNode($varTagIntValueNode);
+        $varTagValueNode = $this->phpDocTagNodeFactory->createVarTagIntValueNode();
+        $phpDocInfo->addTagValueNode($varTagValueNode);
 
         // add @ORM\Id
         $idTagValueNode = new IdTagValueNode($this->arrayPartPhpDocTagPrinter, $this->tagValueNodePrinter);
