@@ -24,7 +24,7 @@ use Rector\BetterPhpDocParser\Attributes\Ast\PhpDoc\SpacelessPhpDocTagNode;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\ClassNameAwareTagInterface;
 use Rector\BetterPhpDocParser\Contract\PhpDocNode\ShortNameAwareTagInterface;
-use Rector\BetterPhpDocParser\Contract\PhpDocNode\TypeAwareTagValueNodeInterface;
+use Rector\BetterPhpDocParser\ValueObject\NodeTypes;
 use Rector\ChangesReporting\Collector\RectorChangeCollector;
 use Rector\Core\Configuration\CurrentNodeProvider;
 use Rector\Core\Exception\NotImplementedYetException;
@@ -479,12 +479,13 @@ final class PhpDocInfo
 
     private function ensureTypeIsTagValueNode(string $type, string $location): void
     {
-        if (StaticInstanceOf::isOneOf($type, [
+        $desiredTypes = array_merge([
             PhpDocTagValueNode::class,
             PhpDocTagNode::class,
-            TypeAwareTagValueNodeInterface::class,
             PhpAttributableTagNodeInterface::class,
-        ])) {
+        ], NodeTypes::TYPE_AWARE_NODES);
+
+        if (StaticInstanceOf::isOneOf($type, $desiredTypes)) {
             return;
         }
 
