@@ -18,11 +18,6 @@ final class AttributeAwareNullableTypeNodeFactory implements AttributeNodeAwareF
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return NullableTypeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, NullableTypeNode::class, true);

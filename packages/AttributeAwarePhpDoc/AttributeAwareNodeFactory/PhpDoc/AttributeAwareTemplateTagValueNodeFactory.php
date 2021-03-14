@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwareTemplateTagValueNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return TemplateTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, TemplateTagValueNode::class, true);

@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwarePhpDocTagNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return PhpDocTagNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, PhpDocTagNode::class, true);

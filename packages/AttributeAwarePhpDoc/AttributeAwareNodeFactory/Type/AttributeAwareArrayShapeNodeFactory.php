@@ -18,11 +18,6 @@ final class AttributeAwareArrayShapeNodeFactory implements AttributeNodeAwareFac
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return ArrayShapeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, ArrayShapeNode::class, true);

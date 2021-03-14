@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwareIdentifierTypeNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return IdentifierTypeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, IdentifierTypeNode::class, true);

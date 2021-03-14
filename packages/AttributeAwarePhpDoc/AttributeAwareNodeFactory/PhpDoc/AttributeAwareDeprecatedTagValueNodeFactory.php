@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwareDeprecatedTagValueNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return DeprecatedTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, DeprecatedTagValueNode::class, true);

@@ -18,11 +18,6 @@ final class AttributeAwareUnionTypeNodeFactory implements AttributeNodeAwareFact
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return UnionTypeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, UnionTypeNode::class, true);

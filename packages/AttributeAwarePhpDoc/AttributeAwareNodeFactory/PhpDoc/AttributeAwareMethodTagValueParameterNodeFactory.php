@@ -18,11 +18,6 @@ final class AttributeAwareMethodTagValueParameterNodeFactory implements Attribut
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return MethodTagValueParameterNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, MethodTagValueParameterNode::class, true);

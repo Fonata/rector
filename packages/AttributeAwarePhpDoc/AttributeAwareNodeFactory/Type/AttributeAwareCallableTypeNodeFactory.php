@@ -18,11 +18,6 @@ final class AttributeAwareCallableTypeNodeFactory implements AttributeNodeAwareF
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return CallableTypeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, CallableTypeNode::class, true);

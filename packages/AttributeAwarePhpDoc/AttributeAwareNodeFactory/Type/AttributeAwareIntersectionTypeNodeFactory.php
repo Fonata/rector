@@ -18,11 +18,6 @@ final class AttributeAwareIntersectionTypeNodeFactory implements AttributeNodeAw
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return IntersectionTypeNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, IntersectionTypeNode::class, true);

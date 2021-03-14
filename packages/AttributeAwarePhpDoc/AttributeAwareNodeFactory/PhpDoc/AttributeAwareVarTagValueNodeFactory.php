@@ -18,11 +18,6 @@ final class AttributeAwareVarTagValueNodeFactory implements AttributeNodeAwareFa
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return VarTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, VarTagValueNode::class, true);

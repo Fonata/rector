@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwareCallableTypeParameterNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return CallableTypeParameterNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, CallableTypeParameterNode::class, true);

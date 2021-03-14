@@ -18,11 +18,6 @@ final class AttributeAwareParamTagValueNodeFactory implements AttributeNodeAware
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return ParamTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, ParamTagValueNode::class, true);

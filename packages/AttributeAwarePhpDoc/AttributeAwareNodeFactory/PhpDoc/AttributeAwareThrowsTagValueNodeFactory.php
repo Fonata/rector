@@ -18,11 +18,6 @@ final class AttributeAwareThrowsTagValueNodeFactory implements AttributeNodeAwar
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return ThrowsTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, ThrowsTagValueNode::class, true);

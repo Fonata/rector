@@ -11,11 +11,6 @@ use Rector\AttributeAwarePhpDoc\Contract\AttributeNodeAwareFactory\AttributeNode
 
 final class AttributeAwareMixinTagValueNodeFactory implements AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string
-    {
-        return MixinTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, MixinTagValueNode::class, true);

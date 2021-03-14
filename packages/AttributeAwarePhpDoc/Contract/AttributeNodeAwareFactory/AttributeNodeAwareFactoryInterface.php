@@ -10,8 +10,6 @@ use Rector\BetterPhpDocParser\Contract\PhpDocNode\AttributeAwareNodeInterface;
 
 interface AttributeNodeAwareFactoryInterface
 {
-    public function getOriginalNodeClass(): string;
-
     public function isMatch(Node $node): bool;
 
     /**

@@ -28,17 +28,4 @@ final class AttributeAwareNodeFactoryCollector
     {
         return $this->attributeAwareNodeFactories;
     }
-
-    /**
-     * @return string[]
-     */
-    public function getSupportedNodeClasses(): array
-    {
-        $supportedNodeClasses = [];
-        foreach ($this->attributeAwareNodeFactories as $attributeAwareNodeFactory) {
-            $supportedNodeClasses[] = $attributeAwareNodeFactory->getOriginalNodeClass();
-        }
-
-        return $supportedNodeClasses;
-    }
 }

@@ -19,11 +19,6 @@ final class AttributeAwareMethodTagValueNodeFactory implements AttributeNodeAwar
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return MethodTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, MethodTagValueNode::class, true);

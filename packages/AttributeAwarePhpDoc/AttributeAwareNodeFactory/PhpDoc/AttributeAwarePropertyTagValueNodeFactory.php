@@ -18,11 +18,6 @@ final class AttributeAwarePropertyTagValueNodeFactory implements AttributeNodeAw
      */
     private $attributeAwareNodeFactory;
 
-    public function getOriginalNodeClass(): string
-    {
-        return PropertyTagValueNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, PropertyTagValueNode::class, true);

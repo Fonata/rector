@@ -30,11 +30,6 @@ final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactory
         $this->phpDocNodeTraverser = $phpDocNodeTraverser;
     }
 
-    public function getOriginalNodeClass(): string
-    {
-        return PhpDocNode::class;
-    }
-
     public function isMatch(Node $node): bool
     {
         return is_a($node, PhpDocNode::class, true);
