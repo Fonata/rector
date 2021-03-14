@@ -149,8 +149,8 @@ CODE_SAMPLE
     private function refactorReturnTagValueNode(ClassMethod $classMethod): void
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
-        $attributeAwareReturnTagValueNode = $phpDocInfo->getReturnTagValue();
-        if (! $attributeAwareReturnTagValueNode instanceof ReturnTagValueNode) {
+        $returnTagValue = $phpDocInfo->getReturnTagValue();
+        if (! $returnTagValue instanceof ReturnTagValueNode) {
             return;
         }
 
@@ -158,15 +158,15 @@ CODE_SAMPLE
             return;
         }
 
-        if ($attributeAwareReturnTagValueNode->type instanceof IdentifierTypeNode) {
+        if ($returnTagValue->type instanceof IdentifierTypeNode) {
             $fullyQualifiedTypeNode = $this->phpDocTypeNodeNameMatcher->matchIdentifier(
-                $attributeAwareReturnTagValueNode->type->name
+                $returnTagValue->type->name
             );
             if (! $fullyQualifiedTypeNode instanceof TypeNode) {
                 return;
             }
 
-            $attributeAwareReturnTagValueNode->type = $fullyQualifiedTypeNode;
+            $returnTagValue->type = $fullyQualifiedTypeNode;
             $phpDocInfo->markAsChanged();
         }
     }

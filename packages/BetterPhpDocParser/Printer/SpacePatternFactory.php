@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Rector\BetterPhpDocParser\Printer;
 
 use PHPStan\PhpDocParser\Ast\PhpDoc\GenericTagValueNode;
+use PHPStan\PhpDocParser\Ast\PhpDoc\ParamTagValueNode;
 use PHPStan\PhpDocParser\Ast\PhpDoc\PhpDocTagNode;
 use Rector\AttributeAwarePhpDoc\Ast\PhpDoc\AttributeAwareParamTagValueNode;
 
@@ -40,20 +41,20 @@ final class SpacePatternFactory
     }
 
     private function createSpacePatternForParamTagValueNode(
-        AttributeAwareParamTagValueNode $attributeAwareParamTagValueNode,
+        ParamTagValueNode $paramTagValueNode,
         string $spacePattern
     ): string {
         // type could be changed, so better keep it here
         $spacePattern .= self::TYPE_PATTERN;
 
-        if ($attributeAwareParamTagValueNode->parameterName !== '') {
+        if ($paramTagValueNode->parameterName !== '') {
             $spacePattern .= '\s+';
 
-            if ($attributeAwareParamTagValueNode->isVariadic) {
+            if ($paramTagValueNode->isVariadic) {
                 $spacePattern .= '...';
             }
 
-            $spacePattern .= preg_quote($attributeAwareParamTagValueNode->parameterName, '#');
+            $spacePattern .= preg_quote($paramTagValueNode->parameterName, '#');
         }
 
         return '#' . $spacePattern . '#';

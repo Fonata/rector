@@ -196,11 +196,6 @@ final class PhpDocInfoPrinter
             $output .= $this->printNode($phpDocChildNode, null, $key + 1, $nodeCount);
         }
 
-//        dump($output);
-//        $end = $this->printEnd($output);
-//        dump($end);
-//        die;
-
         $output = $this->printEnd($output);
 
         // fix missing start

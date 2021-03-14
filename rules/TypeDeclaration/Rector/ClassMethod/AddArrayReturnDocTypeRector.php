@@ -253,24 +253,24 @@ CODE_SAMPLE
     {
         $phpDocInfo = $this->phpDocInfoFactory->createFromNodeOrEmpty($classMethod);
 
-        $attributeAwareReturnTagValueNode = $phpDocInfo->getReturnTagValue();
-        if (! $attributeAwareReturnTagValueNode instanceof ReturnTagValueNode) {
+        $returnTagValue = $phpDocInfo->getReturnTagValue();
+        if (! $returnTagValue instanceof ReturnTagValueNode) {
             return false;
         }
 
-        if ($attributeAwareReturnTagValueNode->type instanceof GenericTypeNode) {
+        if ($returnTagValue->type instanceof GenericTypeNode) {
             return true;
         }
 
-        if ($attributeAwareReturnTagValueNode->type instanceof ArrayShapeNode) {
+        if ($returnTagValue->type instanceof ArrayShapeNode) {
             return true;
         }
 
-        if (! $attributeAwareReturnTagValueNode->type instanceof ArrayTypeNode) {
+        if (! $returnTagValue->type instanceof ArrayTypeNode) {
             return false;
         }
 
-        return $attributeAwareReturnTagValueNode->type->type instanceof ArrayShapeNode;
+        return $returnTagValue->type->type instanceof ArrayShapeNode;
     }
 
     private function hasInheritDoc(ClassMethod $classMethod): bool

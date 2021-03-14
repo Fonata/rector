@@ -193,8 +193,8 @@ final class PhpDocInfo
 
     public function getParamType(string $name): Type
     {
-        $attributeAwareParamTagValueNode = $this->getParamTagValueByName($name);
-        return $this->getTypeOrMixed($attributeAwareParamTagValueNode);
+        $paramTagValueByName = $this->getParamTagValueByName($name);
+        return $this->getTypeOrMixed($paramTagValueByName);
     }
 
     /**
