@@ -38,6 +38,13 @@ final class AttributeAwareNodeFactory
      */
     public function __construct(array $attributeAwareNodeFactories, PhpDocNodeTraverser $phpDocNodeTraverser)
     {
+        foreach ($attributeAwareNodeFactories as $attributeAwareNodeFactory) {
+            // prevents cyclic dependency
+            if ($attributeAwareNodeFactory instanceof AttributeAwareNodeFactoryAwareInterface) {
+                $attributeAwareNodeFactory->setAttributeAwareNodeFactory($this);
+            }
+        }
+
         $this->attributeAwareNodeFactories = $attributeAwareNodeFactories;
         $this->phpDocNodeTraverser = $phpDocNodeTraverser;
     }
@@ -69,11 +76,6 @@ final class AttributeAwareNodeFactory
         foreach ($this->attributeAwareNodeFactories as $attributeAwareNodeFactory) {
             if (! $attributeAwareNodeFactory->isMatch($node)) {
                 continue;
-            }
-
-            // prevents cyclic dependency
-            if ($attributeAwareNodeFactory instanceof AttributeAwareNodeFactoryAwareInterface) {
-                $attributeAwareNodeFactory->setAttributeAwareNodeFactory($this);
             }
 
             return $attributeAwareNodeFactory->create($node, $docContent);

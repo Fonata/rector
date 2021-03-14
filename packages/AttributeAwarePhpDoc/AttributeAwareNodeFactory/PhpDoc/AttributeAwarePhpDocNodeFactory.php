@@ -13,7 +13,7 @@ use Rector\BetterPhpDocParser\Attributes\Ast\AttributeAwareNodeFactory;
 
 use Symplify\SimplePhpDocParser\PhpDocNodeTraverser;
 
-final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactoryInterface //, AttributeAwareNodeFactoryAwareInterface
+final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactoryInterface, AttributeAwareNodeFactoryAwareInterface
 {
     /**
      * @var AttributeAwareNodeFactory
@@ -53,7 +53,6 @@ final class AttributeAwarePhpDocNodeFactory implements AttributeNodeAwareFactory
 
         return new AttributeAwarePhpDocNode($node->children);
     }
-
 
     public function setAttributeAwareNodeFactory(AttributeAwareNodeFactory $attributeAwareNodeFactory): void
     {
